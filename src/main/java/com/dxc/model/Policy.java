@@ -8,4 +8,64 @@ public class Policy {
 
 	@Id
 	private Long id;
+	
+	private String name;
+	
+	private Double duration;
+	
+	private Double coverageAmount;
+	
+	private Double monthlyPay;
+	
+	private Category category;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Double duration) {
+		this.duration = duration;
+	}
+
+	public Double getCoverageAmount() {
+		return coverageAmount;
+	}
+
+	public void setCoverageAmount(Double coverageAmount) {
+		this.coverageAmount = coverageAmount;
+	}
+
+	public Double getMonthlyPay() {
+		return monthlyPay;
+	}
+
+	public void setMonthlyPay(Double monthlyPay) {
+		this.monthlyPay = monthlyPay;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+	
 }
