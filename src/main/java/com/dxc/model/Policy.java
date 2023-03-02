@@ -1,22 +1,25 @@
 package com.dxc.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Policy {
 
 	@Id
 	private Long id;
-	
+	@Column(name = "policy_name")
 	private String name;
-	
+	@Column(name = "policy_duration")
 	private Double duration;
-	
+	@Column(name = "policy_coverageAmount")
 	private Double coverageAmount;
-	
 	private Double monthlyPay;
-	
+	@ManyToOne
+	@JoinColumn(name = "c_fk")
 	private Category category;
 
 	public Long getId() {
@@ -66,6 +69,5 @@ public class Policy {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
+
 }

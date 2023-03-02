@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Category Details</title>
+</head>
+<body>
+	<br />
+	<br />
+	<br />
+	<hr>
+	<h3>Category Details</h3>
+	<table border="2">
+		<tr>
+			<th>Category Id</th>
+			<th>Category Name</th>
+			<th>No Of Policies</th>
+		</tr>
+		<tr th:each="obj:${categories}">
+			<td th:text="${obj.id}"></td>
+			<td th:text="${obj.name}"></td>
+			<td th:text="${obj.noOfPolicies}"></td>
+		</tr>
+	</table>
+</body>
+</html>
