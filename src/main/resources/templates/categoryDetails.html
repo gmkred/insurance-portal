@@ -15,11 +15,15 @@
 			<th>Category Id</th>
 			<th>Category Name</th>
 			<th>No Of Policies</th>
+			<th>Operation</th>
 		</tr>
 		<tr th:each="obj:${categories}">
 			<td th:text="${obj.id}"></td>
 			<td th:text="${obj.name}"></td>
 			<td th:text="${obj.noOfPolicies}"></td>
+			<td>
+                 <a class="btn btn-outline-danger" th:href="@{/category/delete?id={data}(data=${obj.id})}">DELETE</a>
+            </td>
 		</tr>
 	</table>
 </body>
