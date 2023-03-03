@@ -12,5 +12,6 @@ public interface ICategoryService {
 	public Long saveCategory(String categoryName);
 
 	public List<Category> getCategories();
+	public void deleteCategory(Long id);
 
 }
