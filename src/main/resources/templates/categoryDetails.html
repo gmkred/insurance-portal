@@ -3,28 +3,118 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Category Details</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+}
+
+header {
+	height: 100px;
+	background: linear-gradient(to top, rgb(20, 46, 130), rgb(44, 205, 241));
+	margin-bottom: 0;
+}
+
+.logo {
+	float: left;
+	margin-left: 30px;
+	padding: 27px 0;
+	color: #fff;
+}
+
+.navigation-menu {
+	float: right;
+	display: flex;
+	align-items: flex-end;
+	min-height: 100px;
+	margin-right: 10px;
+}
+
+.navigation-menu a {
+	margin-left: 20px;
+	margin-right: 20px;
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+	font-size: 14px;
+	padding: 12px 20px;
+	border-radius: 4px;
+	transition: .3s linear;
+	margin-bottom: 10px;
+}
+
+.navigation-menu a:hover {
+	background: #273b91;
+	color: rgb(255, 255, 255);
+	transform: scale(1.1);
+}
+
+body {
+	background-image: url("/images/businessman-protective.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position-y: 100px;
+}
+
+table {
+	background-color: rgba(255, 255, 255, .4);
+	width: 600px;
+	text-align: center;
+	margin-left: 100px;
+	margin-top: 50px;
+	padding: 30px 20px;
+	border-radius: 5px;
+	color: white;
+	transition: .2s linear;
+}
+
+table:hover {
+	background-color: rgba(255, 255, 255, .7);
+	color: black;
+}
+
+tr {
+	border: 2px solid black;
+}
+
+td {
+	padding-top: 15px;
+}
+</style>
 </head>
 <body>
-	<br />
-	<br />
-	<br />
-	<hr>
+	<header>
+		<div>
+			<h1 class="logo">
+				Insurance<span style="color: #192874">PORTAL</span>
+			</h1>
+			<nav class="navigation-menu">
+				<a th:href="@{/category/}">category</a> <a th:href="@{/policy}">POLICY
+				</a> <a th:href="@{/category/home}">home</a>
+			</nav>
+		</div>
+	</header>
 	<h3>Category Details</h3>
-	<table border="2">
-		<tr>
-			<th>Category Id</th>
-			<th>Category Name</th>
-			<th>No Of Policies</th>
-			<th>Operation</th>
-		</tr>
-		<tr th:each="obj:${categories}">
-			<td th:text="${obj.id}"></td>
-			<td th:text="${obj.name}"></td>
-			<td th:text="${obj.noOfPolicies}"></td>
-			<td>
-                 <a class="btn btn-outline-danger" th:href="@{/category/delete?id={data}(data=${obj.id})}">DELETE</a>
-            </td>
-		</tr>
-	</table>
+	<nav class="navigation-menu">
+		<a th:href="@{/category/}">Add Category</a><br />
+	</nav>
+	<div>
+		<table>
+			<tr>
+				<th>Category Id</th>
+				<th>Category Name</th>
+				<th>No Of Policies</th>
+				<th>Operations</th>
+			</tr>
+			<tr th:each="obj:${categories}">
+				<td th:text="${obj.id}"></td>
+				<td th:text="${obj.name}"></td>
+				<td th:text="${obj.noOfPolicies}"></td>
+				<td><a class="btn btn-outline-danger"
+					th:href="@{/category/delete?id={data}(data=${obj.id})}">DELETE</a></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

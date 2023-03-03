@@ -21,7 +21,7 @@ import com.dxc.utils.ConversionUtils;
 public class CategoryController {
 	@Autowired
 	private ICategoryService service;
-	
+
 	/**
 	 * 
 	 * @return
@@ -30,24 +30,30 @@ public class CategoryController {
 	public String showCategoryPage() {
 		return "category";
 	}
+
+	@GetMapping("/home")
+	public String homePage() {
+		return "home";
+	}
+
 	/**
-	 * This method is responsible for insertion or creation of a 
-	 * category record in the database.
+	 * This method is responsible for insertion or creation of a category record in
+	 * the database.
+	 * 
 	 * @param categoryName parameter stores the ModelAttribute in it from UI page
-	 * and @ModelAttribute maps UI page ModelAttribute object to the Java object.
-	 * @param model is used here to send the data from controller to UI
+	 *                     and @ModelAttribute maps UI page ModelAttribute object to
+	 *                     the Java object.
+	 * @param model        is used here to send the data from controller to UI
 	 * @return "category" page which is a string
 	 */
 	@PostMapping("/save")
-	public String saveCategory(
-			@ModelAttribute(name = "categoryName") String categoryName, 
-			Model model) {
+	public String saveCategory(@ModelAttribute(name = "categoryName") String categoryName, Model model) {
 		Long id = service.saveCategory(categoryName);
 		String message = "Category created with id : " + id;
 		model.addAttribute("message", message);
 		return "category";
 	}
-	
+
 	/**
 	 * 
 	 * @param model
@@ -60,7 +66,7 @@ public class CategoryController {
 		model.addAttribute("categories", categoryDTOs);
 		return "categoryDetails";
 	}
-	
+
 	/**
 	 * 
 	 * @param id
@@ -68,19 +74,14 @@ public class CategoryController {
 	 * @return
 	 */
 	@GetMapping("/delete")
-	public String deleteCategory(
-			@RequestParam Long id,
-			Model model
-			) {
+	public String deleteCategory(@RequestParam Long id, Model model) {
 		service.deleteCategory(id);
-		String message = new StringBuffer().append("Category having id ")
-				.append(id)
-				.append(" is deleted successfully")
+		String message = new StringBuffer().append("Category having id ").append(id).append(" is deleted successfully")
 				.toString();
-		
+
 		model.addAttribute("message", message);
 		return "redirect:details";
-		
+
 	}
 
 }
